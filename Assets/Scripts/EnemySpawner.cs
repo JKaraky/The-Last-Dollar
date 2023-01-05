@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    // Prefab of the ad/enemy
-    public Transform adMen;
     public float spawnRate;
     // List of spawn points
     public List<Transform> spawners;
@@ -26,7 +24,13 @@ public class EnemySpawner : MonoBehaviour
     {
         // Spawner creates an enemy at the randomly chosen spawn point
         yield return new WaitForSeconds(spawnRate);
-        Instantiate(adMen, spawners[randomNumber].position, spawners[randomNumber].rotation);
+        GameObject adMen = EnemyPool.SharedInstance.GetPooledObject();
+        if (adMen != null)
+        {
+            adMen.transform.position = spawners[randomNumber].position;
+            adMen.transform.rotation= spawners[randomNumber].rotation;
+            adMen.SetActive(true);
+        }
         StartCoroutine(spawnTimer(randomNumber));
     }
 }

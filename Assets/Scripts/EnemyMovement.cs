@@ -6,16 +6,16 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public float speed;
-    Vector3 playerPosition;
+    Transform playerPosition;
+    Vector3 goToPoint;
     float step;
-    private float TimeToLive = 5f;
+    bool canGo;
 
     void Start()
     {
         // Gets player position at time of spawning
-        playerPosition = GameObject.Find("Player").GetComponent<Transform>().position;
-        // Destroys ad/enemy after TimeToLive in seconds
-        Destroy(gameObject, TimeToLive);
+        playerPosition = GameObject.Find("Player").GetComponent<Transform>();
+        canGo= true;
     }
 
     
@@ -23,6 +23,23 @@ public class EnemyMovement : MonoBehaviour
     {
         // Moves ad/enemy towards player position at time of spawning
         step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, playerPosition, step);
+        if (canGo) transform.position = Vector3.MoveTowards(transform.position, playerPosition.position, step);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            print("ENTER CIRCLE");
+            canGo= false;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            print("EXIT CIRCLE");
+            canGo = true;
+        }
     }
 }
