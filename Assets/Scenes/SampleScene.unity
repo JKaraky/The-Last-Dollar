@@ -830,6 +830,7 @@ GameObject:
   - component: {fileID: 1520334876}
   - component: {fileID: 1520334875}
   - component: {fileID: 1520334879}
+  - component: {fileID: 1520334880}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -965,6 +966,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
+--- !u!114 &1520334880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520334874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e1e7f2c64655854d89c110e10ea4bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1688187624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,6 +1241,7 @@ GameObject:
   - component: {fileID: 1919131799}
   - component: {fileID: 1919131798}
   - component: {fileID: 1919131800}
+  - component: {fileID: 1919131802}
   m_Layer: 0
   m_Name: BigDaddySpawner
   m_TagString: Untagged
@@ -1284,3 +1298,18 @@ MonoBehaviour:
   pooledObjects: []
   objectToPool: {fileID: 1290715225530138, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
   amountToPool: 10
+--- !u!114 &1919131802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919131797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5953914d52272134283d4a2762f5c6a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: -3390340425276709580, guid: a0b2a96d44ae9e04fb8265c7c34d156c, type: 3}
+  projectilesToSpawn: 10
+  playerLocation: {fileID: 1520334878}
