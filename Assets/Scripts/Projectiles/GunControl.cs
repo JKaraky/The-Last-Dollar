@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunPositioning : MonoBehaviour
+public class GunControl : MonoBehaviour
 {
     [SerializeField] Camera mainCam;
     private Vector3 mousePos;

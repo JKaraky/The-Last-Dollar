@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 427362502}
   - component: {fileID: 427362503}
   m_Layer: 0
-  m_Name: RotatePoint
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 511135734}
   - component: {fileID: 511135735}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: Projectile Starting Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
