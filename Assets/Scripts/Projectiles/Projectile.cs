@@ -5,26 +5,26 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private int projectileSpeed;
-    [SerializeField] private Rigidbody2D projectileRb;
-    private Vector3 mousePos;
-    private Camera mainCam;
+    public Rigidbody2D projectileRb;
     private Transform spawnPosition;
+    private Vector3 mousePos;
     private float maxBorder = 14.5f;
 
 
     void Awake()
     {
-        // Finds camera and assigns rigidbody
-        mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        // Assigns Rigidbody
         projectileRb = GetComponent<Rigidbody2D>();
     }
     // Once the projectile is shot it just keeps going forward
     void OnEnable()
     {
-        // Finds spawning position and assigns it along with where it should go
-        spawnPosition = GameObject.Find("Spawning Position").GetComponent<Transform>();
+        // Assigns spawning location and mouse location from ProjectileSpawning script
+        spawnPosition = ProjectileSpawning.projectilePoolInstance.spawningPosition;
+        mousePos = ProjectileSpawning.projectilePoolInstance.mousepos;
+
+        // Places projectile in position
         transform.position = spawnPosition.position;
-        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
 
         // Draws the vector the projectile will follow
         Vector3 direction = mousePos - spawnPosition.position;

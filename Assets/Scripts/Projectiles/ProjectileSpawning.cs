@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
+// This script manages the projectile pool and saves variables essential to be used in the Projectile script (Spawning position, mouse location)
 public class ProjectileSpawning : MonoBehaviour
 {
-    [Header("Variables")]
+    [Header("Variables for the Pool")]
     public static ProjectileSpawning projectilePoolInstance;
-    public Projectile projectile;
-    public int projectilesToSpawn;
     public ObjectPool<Projectile> projectilePool;
+
+    [Header("Variable for the Projectile")]
+    public Projectile projectile;
+    [SerializeField] Camera mainCam;
+    public Transform spawningPosition;
+    public Vector3 mousepos;
 
     void Awake()
     {
@@ -21,6 +26,12 @@ public class ProjectileSpawning : MonoBehaviour
     {
         projectilePool = new ObjectPool<Projectile>(
             CreateProjectile, ShootProjectile, RemoveProjectile, DestroyProjectile, true, 10, 20);
+    }
+
+    // To know where the mouse location is for the projectile to head towards it
+    void Update()
+    {
+        mousepos = mainCam.ScreenToWorldPoint(Input.mousePosition);
     }
 
     // To create projectiles for the pool
