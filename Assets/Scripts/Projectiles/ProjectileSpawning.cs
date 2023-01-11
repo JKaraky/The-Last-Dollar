@@ -10,7 +10,6 @@ public class ProjectileSpawning : MonoBehaviour
     public Projectile projectile;
     public int projectilesToSpawn;
     public ObjectPool<Projectile> projectilePool;
-    public Transform playerLocation;
 
     void Awake()
     {
@@ -33,7 +32,6 @@ public class ProjectileSpawning : MonoBehaviour
     // To show the projectile when it is shot
     public void ShootProjectile(Projectile projectile)
     {
-        projectile.transform.position = new Vector2(playerLocation.position.x, playerLocation.position.y);
         projectile.gameObject.SetActive(true);
     }
 

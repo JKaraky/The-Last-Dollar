@@ -30,7 +30,6 @@ public class EnemyMovement : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            print("ENTER CIRCLE");
             canGo= false;
         }
     }
@@ -38,7 +37,6 @@ public class EnemyMovement : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            print("EXIT CIRCLE");
             canGo = true;
         }
     }

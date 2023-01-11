@@ -8,15 +8,26 @@ public class Projectile : MonoBehaviour
     [SerializeField] private Rigidbody2D projectileRb;
     private Vector3 mousePos;
     private Camera mainCam;
+    private Transform spawnPosition;
     private float maxBorder = 14.5f;
 
-    // Once the projectile is shot it just keeps going forward
-    void Start()
+
+    void Awake()
     {
+        // Finds camera and assigns rigidbody
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         projectileRb = GetComponent<Rigidbody2D>();
-        Vector3 direction = mousePos - transform.position;
+    }
+    // Once the projectile is shot it just keeps going forward
+    void OnEnable()
+    {
+        // Finds spawning position and assigns it along with where it should go
+        spawnPosition = GameObject.Find("Spawning Position").GetComponent<Transform>();
+        transform.position = spawnPosition.position;
+        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+
+        // Draws the vector the projectile will follow
+        Vector3 direction = mousePos - spawnPosition.position;
         projectileRb.velocity = new Vector2(direction.x, direction.y).normalized * projectileSpeed;
     }
 

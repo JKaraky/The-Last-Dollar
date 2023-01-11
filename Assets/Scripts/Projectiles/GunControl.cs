@@ -5,7 +5,7 @@ using UnityEngine;
 public class GunControl : MonoBehaviour
 {
     [SerializeField] Camera mainCam;
-    private Vector3 mousePos;
+    public Vector3 mousePos;
 
     // Update is called once per frame
     void Update()
