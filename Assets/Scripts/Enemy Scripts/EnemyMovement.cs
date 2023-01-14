@@ -13,9 +13,14 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
-        // Gets player position at time of spawning
+        // This needs to be optimised, it is preferable to avoid the Find function because it is heavy
         playerPosition = GameObject.Find("Player").GetComponent<Transform>();
         canGo= true;
+
+        // We subscribe to the PlayerCircle event
+        PlayerCircle.EnemyEnteredCircle += CircleEnterListener;
+        PlayerCircle.EnemyExitedCircle += CircleExitListener;
+
     }
 
     
@@ -26,18 +31,19 @@ public class EnemyMovement : MonoBehaviour
         if (canGo) transform.position = Vector3.MoveTowards(transform.position, playerPosition.position, step);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void CircleEnterListener()
     {
-        if (collision.tag == "Player")
-        {
-            canGo= false;
-        }
+        canGo= false;
     }
-    private void OnTriggerExit2D(Collider2D collision)
+
+    public void CircleExitListener ()
     {
-        if (collision.tag == "Player")
-        {
-            canGo = true;
-        }
+        canGo = true;
+    }
+
+    private void OnDisable()
+    {
+        PlayerCircle.EnemyEnteredCircle -= CircleEnterListener;
+        PlayerCircle.EnemyExitedCircle -= CircleExitListener;
     }
 }

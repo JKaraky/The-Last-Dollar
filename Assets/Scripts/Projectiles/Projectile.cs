@@ -48,7 +48,7 @@ public class Projectile : MonoBehaviour
     // if the projectile hits an enemy, the enemy is set inactive and the projectile is returned to pool
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Enemy")
+        if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Dollar Enemy")
         {
             collision.gameObject.SetActive(false);
             ProjectileSpawning.projectilePoolInstance.projectilePool.Release(this);
