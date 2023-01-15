@@ -13,8 +13,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
-        // This needs to be optimised, it is preferable to avoid the Find function because it is heavy
-        playerPosition = GameObject.Find("Player").GetComponent<Transform>();
+        playerPosition = EnemyPool.SharedInstance.playerPosition;
         canGo= true;
 
         // We subscribe to the PlayerCircle event

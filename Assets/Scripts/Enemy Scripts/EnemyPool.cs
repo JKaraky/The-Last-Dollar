@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
+// Manages enemy pool and keeps track of player position so the enemy can head towards its position
 public class EnemyPool : MonoBehaviour
 {
     public static EnemyPool SharedInstance;
     public List<GameObject> pooledObjects;
     public GameObject objectToPool;
     public int amountToPool;
+    public Transform playerPosition;
 
     private void Awake()
     {

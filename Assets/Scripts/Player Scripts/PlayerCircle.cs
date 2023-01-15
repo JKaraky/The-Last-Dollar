@@ -10,7 +10,7 @@ public class PlayerCircle : MonoBehaviour
     public static event Action EnemyEnteredCircle;
     public static event Action EnemyExitedCircle;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         // Checks if it collided with an enemy
         if (collision.gameObject.tag == "Enemy")
@@ -30,7 +30,7 @@ public class PlayerCircle : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         // If the dollar enemy dies, a the dollar stops going to it via event sent to DollarFunctionality and the slot is emptied for a new enemy to fill
         if (collision.gameObject.tag == "Dollar Enemy")
