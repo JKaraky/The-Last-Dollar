@@ -6,19 +6,15 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public float speed;
-    Transform playerPosition;
+    GameObject playerCircle;
     Vector3 goToPoint;
     float step;
     bool canGo;
 
     void Start()
     {
-        playerPosition = EnemyPool.SharedInstance.playerPosition;
+        playerCircle = EnemyPool.SharedInstance.playerCircle;
         canGo= true;
-
-        // We subscribe to the PlayerCircle event
-        PlayerCircle.EnemyEnteredCircle += CircleEnterListener;
-        PlayerCircle.EnemyExitedCircle += CircleExitListener;
 
     }
 
@@ -27,22 +23,22 @@ public class EnemyMovement : MonoBehaviour
     {
         // Moves ad/enemy towards player position at time of spawning
         step = speed * Time.deltaTime;
-        if (canGo) transform.position = Vector3.MoveTowards(transform.position, playerPosition.position, step);
+        if (canGo) transform.position = Vector3.MoveTowards(transform.position, playerCircle.transform.position, step);
     }
 
-    public void CircleEnterListener()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        canGo= false;
+        if (collision.gameObject.tag == "Player")
+        {
+            canGo= false;
+        }
     }
 
-    public void CircleExitListener ()
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        canGo = true;
-    }
-
-    private void OnDisable()
-    {
-        PlayerCircle.EnemyEnteredCircle -= CircleEnterListener;
-        PlayerCircle.EnemyExitedCircle -= CircleExitListener;
+        if (collision.gameObject.tag == "Player")
+        {
+            canGo = true;
+        }
     }
 }

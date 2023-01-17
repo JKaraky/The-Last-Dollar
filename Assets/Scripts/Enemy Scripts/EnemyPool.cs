@@ -10,7 +10,7 @@ public class EnemyPool : MonoBehaviour
     public List<GameObject> pooledObjects;
     public GameObject objectToPool;
     public int amountToPool;
-    public Transform playerPosition;
+    public GameObject playerCircle;
 
     private void Awake()
     {
