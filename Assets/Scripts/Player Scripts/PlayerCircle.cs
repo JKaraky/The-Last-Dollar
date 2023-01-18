@@ -20,11 +20,13 @@ public class PlayerCircle : MonoBehaviour
             // If there is already an enemy drawing the dollar nothing happens
             if (dollarEnemy != null)
             {
+                print("There is a dollar enemy already assigned");
                 return;
             }
             // If no enemy is drawing the dollar, this enemy draws it and it sends an event to DollarFunctionality to start moving
             else
             {
+                print("New dollar enemy assigned");
                 collision.gameObject.tag = "Dollar Enemy";
                 dollarEnemy = collision.gameObject;
                 EnemyEnteredCircle?.Invoke();
@@ -44,6 +46,7 @@ public class PlayerCircle : MonoBehaviour
 
             if(numberOfEnemiesInContact == 0)
             {
+                print("There are no enemies in contact so dollar enemy is now empty");
                 dollarEnemy.tag = "Enemy";
                 dollarEnemy = null;
                 return;
@@ -74,6 +77,7 @@ public class PlayerCircle : MonoBehaviour
                     }
                 }
 
+                print("I have assigned a new dollar enemy");
                 dollarEnemy.gameObject.tag = "Enemy";
                 dollarEnemy = dollarEnemyCandidate;
             }

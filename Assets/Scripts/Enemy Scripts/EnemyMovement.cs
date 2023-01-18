@@ -8,22 +8,24 @@ public class EnemyMovement : MonoBehaviour
     public float speed;
     GameObject playerCircle;
     Vector3 goToPoint;
-    float step;
     bool canGo;
+    Rigidbody2D enemyRb;
 
     void Start()
     {
+        enemyRb = GetComponent<Rigidbody2D>();
         playerCircle = EnemyPool.SharedInstance.playerCircle;
         canGo= true;
-
     }
 
     
-    void Update()
+    void FixedUpdate()
     {
-        // Moves ad/enemy towards player position at time of spawning
-        step = speed * Time.deltaTime;
-        if (canGo) transform.position = Vector3.MoveTowards(transform.position, playerCircle.transform.position, step);
+        if (canGo)
+        {
+            Vector2 movementDirection = playerCircle.transform.position - transform.position;
+            enemyRb.velocity = movementDirection * speed;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -31,6 +33,7 @@ public class EnemyMovement : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             canGo= false;
+            enemyRb.isKinematic = true;
         }
     }
 
@@ -39,6 +42,7 @@ public class EnemyMovement : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             canGo = true;
+            enemyRb.isKinematic = false;
         }
     }
 }
