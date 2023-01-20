@@ -80,6 +80,8 @@ public class PlayerCircle : MonoBehaviour
                 print("I have assigned a new dollar enemy");
                 dollarEnemy.gameObject.tag = "Enemy";
                 dollarEnemy = dollarEnemyCandidate;
+                dollarEnemy.tag = "Dollar Enemy";
+                EnemyEnteredCircle?.Invoke();
             }
         }
     }
