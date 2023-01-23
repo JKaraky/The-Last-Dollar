@@ -33,7 +33,6 @@ public class EnemyMovement : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             canGo= false;
-            enemyRb.isKinematic = true;
         }
     }
 
@@ -42,7 +41,6 @@ public class EnemyMovement : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             canGo = true;
-            enemyRb.isKinematic = false;
         }
     }
 }

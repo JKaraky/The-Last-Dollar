@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 4210157123753652}
   - component: {fileID: -7815657355910028545}
   - component: {fileID: 4755120705420304778}
-  - component: {fileID: 2097920760446918326}
+  - component: {fileID: -296513122953454057}
   m_Layer: 0
   m_Name: sword_man
   m_TagString: Enemy
@@ -240,8 +240,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
---- !u!61 &2097920760446918326
-BoxCollider2D:
+--- !u!58 &-296513122953454057
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -253,19 +253,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0090408325, y: 0.28288078}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: -0.010970116, y: 0.2998333}
   serializedVersion: 2
-  m_Size: {x: 0.8718262, y: 1.4434319}
-  m_EdgeRadius: 0
+  m_Radius: 0.7230444
 --- !u!1 &1315759352830414
 GameObject:
   m_ObjectHideFlags: 0

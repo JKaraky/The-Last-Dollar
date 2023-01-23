@@ -7,7 +7,7 @@ public class DollarFunctionality : MonoBehaviour
     [SerializeField] private PlayerCircle playerCircle;
     private GameObject enemy;
     private bool dollarBeingDrawn;
-    public int speed = 4;
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {

@@ -20,13 +20,11 @@ public class PlayerCircle : MonoBehaviour
             // If there is already an enemy drawing the dollar nothing happens
             if (dollarEnemy != null)
             {
-                print("There is a dollar enemy already assigned");
                 return;
             }
             // If no enemy is drawing the dollar, this enemy draws it and it sends an event to DollarFunctionality to start moving
             else
             {
-                print("New dollar enemy assigned");
                 collision.gameObject.tag = "Dollar Enemy";
                 dollarEnemy = collision.gameObject;
                 EnemyEnteredCircle?.Invoke();
@@ -46,7 +44,6 @@ public class PlayerCircle : MonoBehaviour
 
             if(numberOfEnemiesInContact == 0)
             {
-                print("There are no enemies in contact so dollar enemy is now empty");
                 dollarEnemy.tag = "Enemy";
                 dollarEnemy = null;
                 return;
@@ -63,8 +60,6 @@ public class PlayerCircle : MonoBehaviour
                 // We check who amongst these is the closest to the dollarEnemy's last location
                 for (int i = 0; i < numberOfEnemiesInContact; i++) {
 
-                    print(enemyContact[i].point);
-
                     Vector2 directionToEnemy = enemyContact[i].point - dollarEnemyLocation;
 
                     // This is for optimisation. It bypasses using the square root operation of doing Vector3.Distance
@@ -76,8 +71,6 @@ public class PlayerCircle : MonoBehaviour
                         dollarEnemyCandidate = enemyContact[i].collider.gameObject;
                     }
                 }
-
-                print("I have assigned a new dollar enemy");
                 dollarEnemy.gameObject.tag = "Enemy";
                 dollarEnemy = dollarEnemyCandidate;
                 dollarEnemy.tag = "Dollar Enemy";

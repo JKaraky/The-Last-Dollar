@@ -20,7 +20,7 @@ public class GunControl : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, rotationZ); // rotates the object accordingly
 
         // To shoot projectiles
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
             ProjectileSpawning.projectilePoolInstance.projectilePool.Get();
         }
