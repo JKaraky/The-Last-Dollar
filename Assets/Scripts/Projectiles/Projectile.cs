@@ -39,7 +39,7 @@ public class Projectile : MonoBehaviour
             ProjectileSpawning.projectilePoolInstance.projectilePool.Release(this);
         }
 
-        if (transform.position.y > maxBorder || transform.position.y < -maxBorder)
+        else if (transform.position.y > maxBorder || transform.position.y < -maxBorder)
         {
             ProjectileSpawning.projectilePoolInstance.projectilePool.Release(this);
         }
