@@ -375,7 +375,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCircle: {fileID: 11910505}
-  speed: 0.2
+  player: {fileID: 1520334874}
+  attractionSpeed: 0.5
+  rotationSpeed: 10
+  maxDistanceFromPlayer: 1.5
+  minDistanceFromPlayer: 1.48
 --- !u!61 &412238611
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1595,7 +1599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects: []
   objectToPool: {fileID: 1290715225530138, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-  amountToPool: 10
+  amountToPool: 1
   playerCircle: {fileID: 11910501}
 --- !u!114 &1919131802
 MonoBehaviour:

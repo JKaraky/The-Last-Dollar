@@ -5,9 +5,13 @@ using UnityEngine;
 public class DollarFunctionality : MonoBehaviour
 {
     [SerializeField] private PlayerCircle playerCircle;
+    [SerializeField] private GameObject player;
     private GameObject enemy;
     private bool dollarBeingDrawn;
-    public float speed;
+    public float attractionSpeed;
+    public float rotationSpeed;
+    public float maxDistanceFromPlayer;
+    public float minDistanceFromPlayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +20,7 @@ public class DollarFunctionality : MonoBehaviour
         PlayerCircle.EnemyExitedCircle += CircleExitListener;
 
         dollarBeingDrawn = false;
+        print(Vector3.Distance(transform.position, player.transform.position));
     }
 
     // Update is called once per frame
@@ -24,6 +29,9 @@ public class DollarFunctionality : MonoBehaviour
         if (dollarBeingDrawn)
         {
             ForceOfAttraction();
+        } else
+        {
+            NoForceOfAttaction();
         }
     }
 
@@ -31,7 +39,26 @@ public class DollarFunctionality : MonoBehaviour
     public void ForceOfAttraction()
     {
         enemy = playerCircle.dollarEnemy;
-        transform.position = Vector3.MoveTowards(transform.position, enemy.transform.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, enemy.transform.position, attractionSpeed * Time.deltaTime);
+    }
+
+    public void NoForceOfAttaction ()
+    {
+        if (Vector3.Distance(transform.position, player.transform.position) > maxDistanceFromPlayer)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, attractionSpeed * Time.deltaTime);
+        }
+        else if (Vector3.Distance(transform.position, player.transform.position) < minDistanceFromPlayer)
+        {
+            print("distance too small");
+            Vector3 direction = transform.position - player.transform.position;
+            direction.Normalize();
+            transform.Translate(direction * attractionSpeed * Time.deltaTime);
+        }
+        else
+        {
+            transform.RotateAround(player.transform.position, new Vector3(0, 0, 1), rotationSpeed * Time.deltaTime);
+        }
     }
 
     // Called when only when there is no Enemy drawing the dollar
