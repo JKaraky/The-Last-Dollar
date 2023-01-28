@@ -6,6 +6,7 @@ public class DollarFunctionality : MonoBehaviour
 {
     [SerializeField] private PlayerCircle playerCircle;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject dollarTracker;
     private GameObject enemy;
     private bool dollarBeingDrawn;
     public float attractionSpeed;
@@ -50,10 +51,7 @@ public class DollarFunctionality : MonoBehaviour
         }
         else if (Vector3.Distance(transform.position, player.transform.position) < minDistanceFromPlayer)
         {
-            print("distance too small");
-            Vector3 direction = transform.position - player.transform.position;
-            direction.Normalize();
-            transform.Translate(direction * attractionSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, dollarTracker.transform.position, attractionSpeed * Time.deltaTime);
         }
         else
         {
