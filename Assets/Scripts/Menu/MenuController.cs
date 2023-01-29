@@ -16,6 +16,35 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Slider volumeSlider = null;
     [SerializeField] private float defaultVolume = 0.5f;
 
+    [Header("Gameplay Setting")]
+    [SerializeField] private TMP_Text mouseSenTextValue = null;
+    [SerializeField] private Slider mouseSenSlider = null;
+    [SerializeField] private int defaultSen = 5;
+    public int mainMouseSen = 5;
+
+    [Header("Toggle Settings")]
+    [SerializeField] private Toggle invertYToggle= null;
+
+    [Header("Graphics Settings")]
+    [SerializeField] private Slider brightnessSlider = null;
+    [SerializeField] private TMP_Text brightnessTextValue = null;
+    [SerializeField] private float defaultBrightness = 1;
+
+    [Space(10)]
+    [SerializeField] private TMP_Dropdown qualityDropdown;
+    [SerializeField] private Toggle fullscreenToggle;
+
+    private int _qualityLevel;
+    private bool _isFullScreen;
+    private float _brightnessLevel;
+
+    [Header("Resolution Dropdowns")]
+    public TMP_Dropdown resolutionDropdown;
+    private Resolution[] resolutions;
+    private List<Resolution> newRes = new List<Resolution>();
+    private float currentRefreshRate;
+    int currentResolutionIndex = 0;
+
     [Header("Confirmation")]
     [SerializeField] private GameObject confirmationPrompt = null;
     [SerializeField] private GameObject saveSettingsPrompt = null;
@@ -26,12 +55,60 @@ public class MenuController : MonoBehaviour
     public string _hardLevel;
     private string levelToLoad;
 
+
     [Header("Menus")]
     public List<GameObject> menus = new List<GameObject>();
 
     // Queuing menu options for better back tracking
     Stack<GameObject> menuStack = new();
     private bool runOnce = true;
+
+    private void Awake()
+    {
+        //ResetToSaved(true);
+    }
+
+    private void Start()
+    {
+        // First, we populate the resolutions array with the values found in Screen.resolutions
+        resolutions = Screen.resolutions;
+        currentRefreshRate = Screen.currentResolution.refreshRate;
+
+        _isFullScreen = Screen.fullScreen;
+        fullscreenToggle.isOn = _isFullScreen;
+
+        // Then we clear everything we have in the resolutions dropdown menu
+        resolutionDropdown.ClearOptions();
+
+        // We make a list to store the written values of the resolutions and start going through the resolutions in the array
+        List<string> options = new List<string>();
+
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            if (resolutions[i].refreshRate == currentRefreshRate)
+            {
+                // Add the resolutions with the refresh rate we want into the new array
+                newRes.Add(resolutions[i]);
+
+                string option = resolutions[i].width + " x " + resolutions[i].height;
+                options.Add(option);
+
+                // This to get the resolution of the current screen the player is using
+                if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
+                {
+                    currentResolutionIndex = i;
+                }
+            }
+        }
+        // Making the resolutions array to only include the refresh rates we want
+        resolutions = newRes.ToArray();
+
+        // We add the written values to the dropdown and show the current resolution
+        resolutionDropdown.AddOptions(options);
+
+        resolutionDropdown.value = currentResolutionIndex;
+        resolutionDropdown.RefreshShownValue();
+    }
 
     public void NewEasyGameDialog()
     {
@@ -59,22 +136,147 @@ public class MenuController : MonoBehaviour
         shouldApply = true;
     }
 
-    // Universal Apply method, just specify the menu type in editor
+    public void SetMouseSensitivity(float sensitivity)
+    {
+        mainMouseSen = Mathf.RoundToInt(sensitivity);
+        mouseSenTextValue.text = sensitivity.ToString("0");
+
+        shouldApply= true;
+    }
+
+    public void SetBrightness(float brightness)
+    {
+        _brightnessLevel = brightness;
+        brightnessTextValue.text = brightness.ToString("0.0");
+
+        shouldApply = true;
+    }
+
+    public void SetFullScreen(bool isFullScreen)
+    {
+        _isFullScreen= isFullScreen;
+
+        shouldApply = true;
+    }
+
+    public void SetQuality(int qualityIndex)
+    {
+        _qualityLevel = qualityIndex;
+
+        shouldApply = true;
+    }
+
+    public void SetResolution(int resolutionIndex)
+    {
+        Resolution resolution = resolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, _isFullScreen);
+
+        shouldApply = true;
+    }
+
+    // Universal Apply method
     public void Apply()
     {
         if (SimplifyMenuName(currentMenu) == "Audio")
         {
-            PlayerPrefs.SetFloat("volume", AudioListener.volume);
-
-            shouldApply = false;
+            PlayerPrefs.SetFloat("Volume", AudioListener.volume);
         }
+
+        if (SimplifyMenuName(currentMenu) == "Gameplay")
+        {
+            if (invertYToggle.isOn)
+            {
+                PlayerPrefs.SetInt("InvertY", 1);
+
+                // Need to actually invert Y axis
+            }
+            else
+                PlayerPrefs.SetInt("InvertY", 0);
+            PlayerPrefs.SetInt("Sensitivity", mainMouseSen);
+        }
+
+        if (SimplifyMenuName(currentMenu) == "Graphics")
+        {
+            PlayerPrefs.SetFloat("Brightness", _brightnessLevel);
+            // Need to actually change brightness
+
+            PlayerPrefs.SetInt("Quality", _qualityLevel);
+            QualitySettings.SetQualityLevel(_qualityLevel);
+
+            PlayerPrefs.SetInt("FulLScreen", _isFullScreen ? 1 : 0);
+            Screen.fullScreen = _isFullScreen;
+
+            PlayerPrefs.SetInt("ResolutionIndex", currentResolutionIndex);
+        }
+
+        shouldApply = false;
+
         StartCoroutine(ConfirmationBox());
+    }
+
+    public void ResetToSaved(bool resetAll)
+    {
+        if (resetAll || SimplifyMenuName(currentMenu) == "Audio")
+        {
+            if (PlayerPrefs.HasKey("Volume"))
+            {
+                volumeSlider.value = PlayerPrefs.GetFloat("volume");
+                volumeTextValue.text = PlayerPrefs.GetFloat("volume").ToString("0.0");
+
+                SetVolume(volumeSlider.value);
+            }
+
+        }
+        if (resetAll || SimplifyMenuName(currentMenu) == "Gameplay")
+        {
+            if (PlayerPrefs.HasKey("InvertY"))
+            {
+                invertYToggle.isOn = PlayerPrefs.GetInt("InvertY") == 1 ? true : false;
+            }
+            if (PlayerPrefs.HasKey("Sensitivity"))
+            {
+                mouseSenTextValue.text = PlayerPrefs.GetInt("Sensitivity").ToString("0");
+                mouseSenSlider.value = PlayerPrefs.GetInt("Sensitivity");
+                mainMouseSen = PlayerPrefs.GetInt("Sensitivity");
+
+                SetMouseSensitivity(mainMouseSen);
+            }
+        }
+        if (resetAll || SimplifyMenuName(currentMenu) == "Graphics")
+        {
+            if (PlayerPrefs.HasKey("Brightness"))
+            {
+                brightnessSlider.value = PlayerPrefs.GetFloat("Brightness");
+                brightnessTextValue.text = PlayerPrefs.GetFloat("Brightness").ToString("0.0");
+
+                SetBrightness(brightnessSlider.value);
+            }
+            if (PlayerPrefs.HasKey("Quality"))
+            {
+                qualityDropdown.value = PlayerPrefs.GetInt("Quality");
+
+                SetQuality(qualityDropdown.value);
+            }
+            if (PlayerPrefs.HasKey("FulLScreen"))
+            {
+                fullscreenToggle.isOn = PlayerPrefs.GetInt("FulLScreen") == 1 ? true : false;
+
+                SetFullScreen(fullscreenToggle.isOn);
+            }
+            if (PlayerPrefs.HasKey("ResolutionIndex"))
+            {
+                currentResolutionIndex = PlayerPrefs.GetInt("ResolutionIndex");
+                resolutionDropdown.value = currentResolutionIndex;
+
+                SetResolution(currentResolutionIndex);
+            }
+        }
     }
 
     // Universal Back method, specify menu type in editor
     public void Back (string MenuType)
     {
-        if (MenuType == "Audio")
+        if (MenuType != "Go Back")
         {
             if (shouldApply)
             {
@@ -82,7 +284,9 @@ public class MenuController : MonoBehaviour
                 currentMenu = "Back Confirmation Dialog";
 
                 menuStack.Push(FindByName(currentMenu));
-                print("Top of Stack: " + menuStack.Peek());
+                print("Current Menu: " + menuStack.Peek());
+
+                GetPrevMenu();
             }
             else
                 Back("Go Back");
@@ -95,26 +299,22 @@ public class MenuController : MonoBehaviour
             {
                 menuStack.Pop().SetActive(false);
                 print("Top of Stack: " + menuStack.Peek());
+
+                ResetToSaved(false);
+
+                shouldApply = false;
             }
 
             // Going back once and turning the menu off
             menuStack.Pop().SetActive(false);
-            print("Top of Stack: " + menuStack.Peek());
 
             // Turning the menu at the top of the Stack on and storing its name in currentMenu
             menuStack.Peek().SetActive(true);
-            print("Top of Stack: " + menuStack.Peek());
+
             currentMenu = menuStack.Peek().name;
 
             // Popping once so we know what the previous menu is
-            prevMenu = menuStack.Pop().name;
-            
-            if (menuStack.Count > 0)
-                print("Previous of Stack: " + menuStack.Peek());
-
-            // Adding the menu again because we popped it off earlier (only way to get previous element)
-            menuStack.Push(FindByName(currentMenu));
-            print("Top of Stack: " + menuStack.Peek());
+            GetPrevMenu();
         }
     }
 
@@ -129,6 +329,31 @@ public class MenuController : MonoBehaviour
 
             shouldApply = true;
         }
+        if (SimplifyMenuName(currentMenu) == "Gameplay")
+        {
+            mouseSenTextValue.text = defaultSen.ToString("0");
+            mouseSenSlider.value = defaultSen;
+            mainMouseSen = defaultSen;
+            invertYToggle.isOn= false;
+
+            shouldApply= true;
+        }
+        if (SimplifyMenuName(currentMenu) == "Graphics")
+        {
+            // Reset brightness
+            brightnessSlider.value = defaultBrightness;
+            brightnessTextValue.text = defaultBrightness.ToString("0.0");
+
+            qualityDropdown.value = 1;
+            QualitySettings.SetQualityLevel(1);
+
+            fullscreenToggle.isOn= true;
+            Screen.fullScreen = true;
+
+            Resolution currentResolution = Screen.currentResolution;
+            Screen.SetResolution(currentResolution.width, currentResolution.height, Screen.fullScreen);
+            resolutionDropdown.value = resolutions.Length;
+        }
     }
 
     public void SetCurMenu (string menu)
@@ -137,20 +362,34 @@ public class MenuController : MonoBehaviour
         if (runOnce)
         {
             menuStack.Push(menus[0]);
-            print("Top of Stack: " + menuStack.Peek());
             runOnce = false;
         }
+        // Turning off previous menu
+        menuStack.Peek().SetActive(false);
+
         currentMenu = menu;
 
         // Adding this menu to the Stack
         menuStack.Push(FindByName(currentMenu));
-        print("Top of Stack: " + menuStack.Peek());
+        // Turning on this menu
+        menuStack.Peek().SetActive(true);
 
         print("Current Menu: " + currentMenu);
+
+        GetPrevMenu();
     }
-    public void SetPrevMenu(string menu)
+    public void GetPrevMenu()
     {
-        prevMenu = menu;
+        if (menuStack.Count > 1)
+        {
+            menuStack.Pop();
+            prevMenu = menuStack.Peek().name;
+            menuStack.Push(FindByName(currentMenu));
+        }
+        else
+        {
+            prevMenu = "";
+        }
         print("Previous Menu: " + prevMenu);
     }
 
@@ -174,7 +413,10 @@ public class MenuController : MonoBehaviour
         {
             case "Sound Dialog":
                 return "Audio";
-
+            case "Gameplay Dialog":
+                return "Gameplay";
+            case "Graphics Dialog":
+                return "Graphics";
         }
         return name;
     }
