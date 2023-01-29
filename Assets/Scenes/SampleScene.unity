@@ -378,7 +378,8 @@ MonoBehaviour:
   playerCircle: {fileID: 11910505}
   player: {fileID: 1520334874}
   dollarTracker: {fileID: 1671192763}
-  attractionSpeed: 0.5
+  attractionSpeed: 2
+  recoverySpeed: 20
   rotationSpeed: 10
   maxDistanceFromPlayer: 1.5
   minDistanceFromPlayer: 1.48

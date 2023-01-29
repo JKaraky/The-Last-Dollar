@@ -9,7 +9,10 @@ public class DollarFunctionality : MonoBehaviour
     [SerializeField] private GameObject dollarTracker;
     private GameObject enemy;
     private bool dollarBeingDrawn;
+    private float xMovement;
+    private float yMovement;
     public float attractionSpeed;
+    public float recoverySpeed;
     public float rotationSpeed;
     public float maxDistanceFromPlayer;
     public float minDistanceFromPlayer;
@@ -21,7 +24,6 @@ public class DollarFunctionality : MonoBehaviour
         PlayerCircle.EnemyExitedCircle += CircleExitListener;
 
         dollarBeingDrawn = false;
-        print(Vector3.Distance(transform.position, player.transform.position));
     }
 
     // Update is called once per frame
@@ -30,6 +32,7 @@ public class DollarFunctionality : MonoBehaviour
         if (dollarBeingDrawn)
         {
             ForceOfAttraction();
+            PlayerDollarControl();
         } else
         {
             NoForceOfAttaction();
@@ -56,6 +59,19 @@ public class DollarFunctionality : MonoBehaviour
         else
         {
             transform.RotateAround(player.transform.position, new Vector3(0, 0, 1), rotationSpeed * Time.deltaTime);
+        }
+    }
+
+    public void PlayerDollarControl ()
+    {
+        if (Input.GetButtonDown("HorizontalDollar") || Input.GetButtonDown("VerticalDollar"))
+        {
+            xMovement = Input.GetAxisRaw("HorizontalDollar");
+            yMovement = Input.GetAxisRaw("VerticalDollar");
+
+            Vector2 inputVector = new Vector2(xMovement, yMovement).normalized;
+
+            transform.Translate(inputVector * recoverySpeed * Time.deltaTime);
         }
     }
 
