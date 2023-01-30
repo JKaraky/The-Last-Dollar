@@ -63,11 +63,6 @@ public class MenuController : MonoBehaviour
     Stack<GameObject> menuStack = new();
     private bool runOnce = true;
 
-    private void Awake()
-    {
-        //ResetToSaved(true);
-    }
-
     private void Start()
     {
         // First, we populate the resolutions array with the values found in Screen.resolutions
@@ -108,6 +103,9 @@ public class MenuController : MonoBehaviour
 
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+
+        // Loading Prefs
+        ResetToSaved(true);
     }
 
     public void NewEasyGameDialog()
@@ -168,6 +166,8 @@ public class MenuController : MonoBehaviour
 
     public void SetResolution(int resolutionIndex)
     {
+        currentResolutionIndex= resolutionIndex;
+
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, _isFullScreen);
 
@@ -220,8 +220,8 @@ public class MenuController : MonoBehaviour
         {
             if (PlayerPrefs.HasKey("Volume"))
             {
-                volumeSlider.value = PlayerPrefs.GetFloat("volume");
-                volumeTextValue.text = PlayerPrefs.GetFloat("volume").ToString("0.0");
+                volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+                volumeTextValue.text = PlayerPrefs.GetFloat("Volume").ToString("0.0");
 
                 SetVolume(volumeSlider.value);
             }
