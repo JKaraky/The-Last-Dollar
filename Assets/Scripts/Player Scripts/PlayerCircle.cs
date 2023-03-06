@@ -30,6 +30,21 @@ public class PlayerCircle : MonoBehaviour
                 EnemyEnteredCircle?.Invoke();
             }
         }
+        else if (collision.gameObject.tag == "Alt Enemy")
+        {
+            // If there is already an enemy drawing the dollar nothing happens
+            if (dollarEnemy != null)
+            {
+                return;
+            }
+            // If no enemy is drawing the dollar, this enemy draws it and it sends an event to DollarFunctionality to start moving
+            else
+            {
+                collision.gameObject.tag = "Alt Dollar Enemy";
+                dollarEnemy = collision.gameObject;
+                EnemyEnteredCircle?.Invoke();
+            }
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)

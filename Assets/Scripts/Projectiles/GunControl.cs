@@ -24,6 +24,12 @@ public class GunControl : MonoBehaviour
         {
             ProjectileSpawning.projectilePoolInstance.projectilePool.Get();
         }
+
+        // To shoot variant projectiles
+        if (Input.GetMouseButtonDown(1) && !PauseMenu.gameIsPaused)
+        {
+            ProjectileSpawning.projectilePoolInstance.variantProjectilePool.Get();
+        }
     }
 }
 

@@ -90,7 +90,7 @@ public class DollarFunctionality : MonoBehaviour
     // When colliding with any enemy, the dollar is lost, we unsibscribe from all events
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Dollar Enemy")
+        if(collision.gameObject.GetComponent<EnemyMovement>() != null)
         {
             PlayerCircle.EnemyEnteredCircle -= CircleEnterListener;
             PlayerCircle.EnemyExitedCircle -= CircleExitListener;

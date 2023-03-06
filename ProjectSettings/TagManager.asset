@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - Dollar Enemy
+  - Alt Enemy
+  - Alt Dollar Enemy
   layers:
   - Default
   - TransparentFX

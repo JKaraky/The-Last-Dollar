@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class ProjectileVariant : MonoBehaviour
 {
     [SerializeField] private int projectileSpeed;
     public Rigidbody2D projectileRb;
@@ -36,26 +36,26 @@ public class Projectile : MonoBehaviour
         // if the projectile goes out of bounds it is returned to the pool
         if (transform.position.x > maxBorder || transform.position.x < -maxBorder)
         {
-            ProjectileSpawning.projectilePoolInstance.projectilePool.Release(this);
+            ProjectileSpawning.projectilePoolInstance.variantProjectilePool.Release(this);
         }
 
         else if (transform.position.y > maxBorder || transform.position.y < -maxBorder)
         {
-            ProjectileSpawning.projectilePoolInstance.projectilePool.Release(this);
+            ProjectileSpawning.projectilePoolInstance.variantProjectilePool.Release(this);
         }
     }
 
     // if the projectile hits an enemy, the enemy is set inactive and the projectile is returned to pool
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Dollar Enemy")
+        if (collision.gameObject.tag == "Alt Enemy" || collision.gameObject.tag == "Alt Dollar Enemy")
         {
             collision.gameObject.SetActive(false);
-            ProjectileSpawning.projectilePoolInstance.projectilePool.Release(this);
+            ProjectileSpawning.projectilePoolInstance.variantProjectilePool.Release(this);
         }
-        else if(collision.gameObject.tag == "Alt Enemy" || collision.gameObject.tag == "Alt Dollar Enemy")
+        else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Dollar Enemy")
         {
-            ProjectileSpawning.projectilePoolInstance.projectilePool.Release(this);
+            ProjectileSpawning.projectilePoolInstance.variantProjectilePool.Release(this);
         }
     }
 }

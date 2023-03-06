@@ -1947,7 +1947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1174532521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3014,7 +3014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dabc51015823ce4f8aa2d6ebc95fc39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 0
+  spawnRate: 1
   spawners:
   - {fileID: 1802655715}
   - {fileID: 752764645}
@@ -3049,8 +3049,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObjects: []
+  altPooledObjects: []
   objectToPool: {fileID: 1290715225530138, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
-  amountToPool: 1
+  altObjectToPool: {fileID: 1290715225530138, guid: 1e3279f9b6949a64c95c1c18407dfe57, type: 3}
+  amountToPool: 5
   playerCircle: {fileID: 11910501}
 --- !u!114 &1919131802
 MonoBehaviour:
@@ -3065,6 +3067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: -3390340425276709580, guid: a0b2a96d44ae9e04fb8265c7c34d156c, type: 3}
+  projectileVariant: {fileID: -8937093823445072919, guid: 5727a293f7b980e4a8807e76547d745d, type: 3}
   mainCam: {fileID: 519420031}
   spawningPosition: {fileID: 511135734}
   mousepos: {x: 0, y: 0, z: 0}
