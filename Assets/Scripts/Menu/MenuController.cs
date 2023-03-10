@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -45,6 +46,19 @@ public class MenuController : MonoBehaviour
     private float currentRefreshRate;
     int currentResolutionIndex = 0;
 
+    [Header("Highscore Texts")]
+    [SerializeField] private GameObject firstScoreContainer = null;
+    [SerializeField] private TMP_Text firstScoreText = null;
+    [SerializeField] private TMP_Text firstNameText = null;
+    [SerializeField] private GameObject secondScoreContainer = null;
+    [SerializeField] private TMP_Text secondScoreText = null;
+    [SerializeField] private TMP_Text secondNameText = null;
+    [SerializeField] private GameObject thirdScoreContainer = null;
+    [SerializeField] private TMP_Text thirdScoreText = null;
+    [SerializeField] private TMP_Text thirdNameText = null;
+
+    private List<Scorer> scoreList = new();
+
     [Header("Confirmation")]
     [SerializeField] private GameObject confirmationPrompt = null;
     [SerializeField] private GameObject saveSettingsPrompt = null;
@@ -63,6 +77,27 @@ public class MenuController : MonoBehaviour
     Stack<GameObject> menuStack = new();
     private bool runOnce = true;
 
+    private void Awake()
+    {
+        GameManager.OnStateChange += GameManagerOnStateChange;
+    }
+    private void OnDestroy()
+    {
+        GameManager.OnStateChange -= GameManagerOnStateChange;
+    }
+    public void GameManagerOnStateChange(GameState state)
+    {
+        switch (state)
+        {
+            case GameState.MainMenu:
+                FillScoresTextFromPrefs();
+                break;
+            case GameState.Play:
+                break;
+            case GameState.End:
+                break;
+        }
+    }
     private void Start()
     {
         // First, we populate the resolutions array with the values found in Screen.resolutions
@@ -106,19 +141,27 @@ public class MenuController : MonoBehaviour
 
         // Loading Prefs
         ResetToSaved(true);
+        // Setting Game State to Main Menu
+        GameManager.Instance.UpdateGameState(GameState.MainMenu);
     }
 
     public void NewEasyGameDialog()
     {
         SceneManager.LoadScene(_easyLevel);
+        // Changing game state to Play
+        GameManager.Instance.UpdateGameState(GameState.Play);
     }
     public void NewMediumGameDialog()
     {
         SceneManager.LoadScene(_mediumLevel);
+        // Changing game state to Play
+        GameManager.Instance.UpdateGameState(GameState.Play);
     }
     public void NewHardGameDialog()
     {
         SceneManager.LoadScene(_hardLevel);
+        // Changing game state to Play
+        GameManager.Instance.UpdateGameState(GameState.Play);
     }
 
     public void ExitButton()
@@ -271,6 +314,10 @@ public class MenuController : MonoBehaviour
                 SetResolution(currentResolutionIndex);
             }
         }
+        if (resetAll)
+        {
+            FillScoresTextFromPrefs();
+        }
     }
 
     // Universal Back method, specify menu type in editor
@@ -419,6 +466,42 @@ public class MenuController : MonoBehaviour
                 return "Graphics";
         }
         return name;
+    }
+    public void FillScoresTextFromPrefs()
+    {
+        // Setting the score text fields
+        scoreList.Clear();
+
+        if (PlayerPrefs.HasKey("FirstScore"))
+        {
+            firstScoreContainer.SetActive(true);
+            firstScoreText.text = PlayerPrefs.GetInt("FirstScore").ToString();
+            firstNameText.text = PlayerPrefs.GetString("FirstScoreName");
+
+            scoreList.Add(new Scorer(firstNameText.text, int.Parse(firstScoreText.text)));
+        }
+        else
+            firstScoreContainer.SetActive(false);
+        if (PlayerPrefs.HasKey("SecondScore"))
+        {
+            secondScoreContainer.SetActive(true);
+            secondScoreText.text = PlayerPrefs.GetInt("SecondScore").ToString();
+            secondNameText.text = PlayerPrefs.GetString("SecondScoreName");
+
+            scoreList.Add(new Scorer(secondNameText.text, int.Parse(secondScoreText.text)));
+        }
+        else
+            secondScoreContainer.SetActive(false);
+        if (PlayerPrefs.HasKey("ThirdScore"))
+        {
+            thirdScoreContainer.SetActive(true);
+            thirdScoreText.text = PlayerPrefs.GetInt("ThirdScore").ToString();
+            thirdNameText.text = PlayerPrefs.GetString("ThirdScoreName");
+
+            scoreList.Add(new Scorer(thirdNameText.text, int.Parse(thirdScoreText.text)));
+        }
+        else
+            thirdScoreContainer.SetActive(false);
     }
 
     public IEnumerator ConfirmationBox()

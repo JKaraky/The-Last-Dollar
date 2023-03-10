@@ -52,6 +52,8 @@ public class ProjectileVariant : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             ProjectileSpawning.projectilePoolInstance.variantProjectilePool.Release(this);
+
+            GameManager.Instance.TriggerEnemyKill();
         }
         else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Dollar Enemy")
         {

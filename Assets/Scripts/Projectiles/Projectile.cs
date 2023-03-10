@@ -52,6 +52,8 @@ public class Projectile : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             ProjectileSpawning.projectilePoolInstance.projectilePool.Release(this);
+
+            GameManager.Instance.TriggerEnemyKill();
         }
         else if(collision.gameObject.tag == "Alt Enemy" || collision.gameObject.tag == "Alt Dollar Enemy")
         {

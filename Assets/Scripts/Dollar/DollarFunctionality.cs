@@ -95,6 +95,8 @@ public class DollarFunctionality : MonoBehaviour
             PlayerCircle.EnemyEnteredCircle -= CircleEnterListener;
             PlayerCircle.EnemyExitedCircle -= CircleExitListener;
             Destroy(gameObject);
+
+            GameManager.Instance.UpdateGameState(GameState.End);
         }
         
     }

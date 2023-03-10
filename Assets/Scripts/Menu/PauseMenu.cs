@@ -11,9 +11,33 @@ public class PauseMenu : MonoBehaviour
     public string _mediumLevel;
     public string _hardLevel;
     private string levelToLoad;
+    public string _mainMenu;
 
     public static bool gameIsPaused;
 
+    private void Awake()
+    {
+        GameManager.OnStateChange += GameManagerOnStateChange;
+    }
+    private void OnDestroy()
+    {
+        GameManager.OnStateChange += GameManagerOnStateChange;
+    }
+    public void GameManagerOnStateChange(GameState state)
+    {
+        switch (state)
+        {
+            case GameState.MainMenu:
+                Time.timeScale = 1;
+                break;
+            case GameState.Play:
+                Time.timeScale = 1;
+                break;
+            case GameState.End:
+                Time.timeScale = 0f;
+                break;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -41,17 +65,24 @@ public class PauseMenu : MonoBehaviour
     public void NewEasyGameDialog()
     {
         SceneManager.LoadScene(_easyLevel);
+        // Changing game state to Play
+        GameManager.Instance.UpdateGameState(GameState.Play);
     }
     public void NewMediumGameDialog()
     {
         SceneManager.LoadScene(_mediumLevel);
+        // Changing game state to Play
+        GameManager.Instance.UpdateGameState(GameState.Play);
     }
     public void NewHardGameDialog()
     {
         SceneManager.LoadScene(_hardLevel);
+        // Changing game state to Play
+        GameManager.Instance.UpdateGameState(GameState.Play);
     }
     public void ExitButton()
     {
-        Application.Quit();
+        SceneManager.LoadScene(_mainMenu);
+        GameManager.Instance.UpdateGameState(GameState.MainMenu);
     }
 }
