@@ -50,7 +50,7 @@ public class PlayerCircle : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         // If the dollar enemy dies, the dollar stops going to it via event sent to DollarFunctionality and the slot is allocated to a new enemy
-        if (collision.gameObject.tag == "Dollar Enemy")
+        if (collision.gameObject.tag == "Dollar Enemy" || collision.gameObject.tag == "Alt Dollar Enemy")
         {
             EnemyExitedCircle?.Invoke();
 
@@ -59,9 +59,19 @@ public class PlayerCircle : MonoBehaviour
 
             if(numberOfEnemiesInContact == 0)
             {
-                dollarEnemy.tag = "Enemy";
-                dollarEnemy = null;
-                return;
+                if (collision.gameObject.tag == "Dollar Enemy")
+                {
+                    dollarEnemy.tag = "Enemy";
+                    dollarEnemy = null;
+                    return;
+                }
+                else if (collision.gameObject.tag == "Alt Dollar Enemy")
+                {
+                    dollarEnemy.tag = "Alt Enemy";
+                    dollarEnemy = null;
+                    return;
+                }
+                
             } 
             else
             {
@@ -86,9 +96,27 @@ public class PlayerCircle : MonoBehaviour
                         dollarEnemyCandidate = enemyContact[i].collider.gameObject;
                     }
                 }
-                dollarEnemy.gameObject.tag = "Enemy";
+
+                if(dollarEnemy.tag == "Dollar Enemy")
+                {
+                    dollarEnemy.gameObject.tag = "Enemy";
+                }
+                else if (dollarEnemy.tag == "Alt Dollar Enemy")
+                {
+                    dollarEnemy.gameObject.tag = "Alt Enemy";
+                }
+
                 dollarEnemy = dollarEnemyCandidate;
-                dollarEnemy.tag = "Dollar Enemy";
+
+                if (dollarEnemyCandidate.tag == "Enemy")
+                {
+                    dollarEnemy.tag = "Dollar Enemy";
+                }
+                else if (dollarEnemyCandidate.tag == "Alt Enemy")
+                {
+                    dollarEnemy.tag = "Alt Dollar Enemy";
+                }
+
                 EnemyEnteredCircle?.Invoke();
             }
         }

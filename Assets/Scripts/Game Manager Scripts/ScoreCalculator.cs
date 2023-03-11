@@ -51,8 +51,6 @@ public class ScoreCalculator : MonoBehaviour
     {
         // Adding points per each kill. Currently adds 1 point times the score multiplier which should change based on difficulty
         currentScore += 1*scoreMultiplier;
-
-        Debug.Log(scoreText.text);
     }
 
     

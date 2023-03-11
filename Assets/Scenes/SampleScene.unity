@@ -5089,7 +5089,7 @@ MonoBehaviour:
   altPooledObjects: []
   objectToPool: {fileID: 1290715225530138, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
   altObjectToPool: {fileID: 1290715225530138, guid: 1e3279f9b6949a64c95c1c18407dfe57, type: 3}
-  amountToPool: 5
+  amountToPool: 1
   playerCircle: {fileID: 11910501}
 --- !u!114 &1919131802
 MonoBehaviour:

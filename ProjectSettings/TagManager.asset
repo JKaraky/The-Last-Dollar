@@ -8,6 +8,8 @@ TagManager:
   - Dollar Enemy
   - Alt Enemy
   - Alt Dollar Enemy
+  - Pickup
+  - Alt Pickup
   layers:
   - Default
   - TransparentFX
