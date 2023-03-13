@@ -7,6 +7,7 @@ public class DollarFunctionality : MonoBehaviour
     [SerializeField] private PlayerCircle playerCircle;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject dollarTracker;
+    [SerializeField] private GameObject dollarContainer;
     private GameObject enemy;
     private bool dollarBeingDrawn;
     private float xMovement;
@@ -71,7 +72,7 @@ public class DollarFunctionality : MonoBehaviour
 
             Vector2 inputVector = new Vector2(xMovement, yMovement).normalized;
 
-            transform.Translate(inputVector * recoverySpeed * Time.deltaTime);
+            dollarContainer.transform.Translate(inputVector * recoverySpeed * Time.deltaTime);
         }
     }
 
