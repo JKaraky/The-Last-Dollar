@@ -69,11 +69,19 @@ public class GunControl : MonoBehaviour
         {
             ammoLeft = pickupAmmoReload;
             ammoContainer.SetActive(true);
+            if(!ammoFirstShot.activeSelf)
+            {
+                ammoFirstShot.SetActive(true);
+            }
             collision.gameObject.SetActive(false);
         }
         else if (collision.CompareTag("Alt Pickup")) {
             altAmmoLeft = pickupAmmoReload;
             altAmmoContainer.SetActive(true);
+            if (!altAmmoFirstShot.activeSelf)
+            {
+                altAmmoFirstShot.SetActive(true);
+            }
             collision.gameObject.SetActive(false);
         }
     }
