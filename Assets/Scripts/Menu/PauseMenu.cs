@@ -80,6 +80,11 @@ public class PauseMenu : MonoBehaviour
         // Changing game state to Play
         GameManager.Instance.UpdateGameState(GameState.Play);
     }
+
+    public void ShowInstructions()
+    {
+
+    }
     public void ExitButton()
     {
         SceneManager.LoadScene(_mainMenu);

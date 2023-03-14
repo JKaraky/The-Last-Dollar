@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
 
     [Header("Movement")]
-    private float maxBorder = 14.5f;
+    public float maxBorder = 14.5f;
 
 
     void Awake()

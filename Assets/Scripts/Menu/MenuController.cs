@@ -177,14 +177,6 @@ public class MenuController : MonoBehaviour
         shouldApply = true;
     }
 
-    public void SetMouseSensitivity(float sensitivity)
-    {
-        mainMouseSen = Mathf.RoundToInt(sensitivity);
-        mouseSenTextValue.text = sensitivity.ToString("0");
-
-        shouldApply= true;
-    }
-
     public void SetBrightness(float brightness)
     {
         _brightnessLevel = brightness;
@@ -269,21 +261,6 @@ public class MenuController : MonoBehaviour
                 SetVolume(volumeSlider.value);
             }
 
-        }
-        if (resetAll || SimplifyMenuName(currentMenu) == "Gameplay")
-        {
-            if (PlayerPrefs.HasKey("InvertY"))
-            {
-                invertYToggle.isOn = PlayerPrefs.GetInt("InvertY") == 1 ? true : false;
-            }
-            if (PlayerPrefs.HasKey("Sensitivity"))
-            {
-                mouseSenTextValue.text = PlayerPrefs.GetInt("Sensitivity").ToString("0");
-                mouseSenSlider.value = PlayerPrefs.GetInt("Sensitivity");
-                mainMouseSen = PlayerPrefs.GetInt("Sensitivity");
-
-                SetMouseSensitivity(mainMouseSen);
-            }
         }
         if (resetAll || SimplifyMenuName(currentMenu) == "Graphics")
         {
@@ -460,8 +437,6 @@ public class MenuController : MonoBehaviour
         {
             case "Sound Dialog":
                 return "Audio";
-            case "Gameplay Dialog":
-                return "Gameplay";
             case "Graphics Dialog":
                 return "Graphics";
         }
