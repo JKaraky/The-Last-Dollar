@@ -4169,7 +4169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -700.70996, y: -237.00003}
+  m_AnchoredPosition: {x: -700.7099, y: -237.00003}
   m_SizeDelta: {x: -1673.166, y: -774.475}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &691612481
@@ -9725,7 +9725,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -700.70996, y: 147}
+  m_AnchoredPosition: {x: -700.7099, y: 147}
   m_SizeDelta: {x: -1673.166, y: -774.475}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1721721472
@@ -10005,7 +10005,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -700.70996, y: -52}
+  m_AnchoredPosition: {x: -700.7099, y: -52}
   m_SizeDelta: {x: -1673.166, y: -774.475}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1748773062
@@ -12337,9 +12337,9 @@ MonoBehaviour:
   thirdNameText: {fileID: 318209231}
   confirmationPrompt: {fileID: 321084994}
   saveSettingsPrompt: {fileID: 1985626487}
-  _easyLevel: SampleScene
+  _easyLevel: Normal
   _mediumLevel: 
-  _hardLevel: 
+  _hardLevel: Hard
   menus:
   - {fileID: 1496427346}
   - {fileID: 1358366144}
