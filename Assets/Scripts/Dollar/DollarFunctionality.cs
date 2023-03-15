@@ -13,6 +13,7 @@ public class DollarFunctionality : MonoBehaviour
     private float xMovement;
     private float yMovement;
     public float attractionSpeed;
+    public float goingBackSpeed;
     public float recoverySpeed;
     public float rotationSpeed;
     public float maxDistanceFromPlayer;
@@ -51,11 +52,11 @@ public class DollarFunctionality : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, player.transform.position) > maxDistanceFromPlayer)
         {
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, attractionSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, goingBackSpeed * Time.deltaTime);
         }
         else if (Vector3.Distance(transform.position, player.transform.position) < minDistanceFromPlayer)
         {
-            transform.position = Vector3.MoveTowards(transform.position, dollarTracker.transform.position, attractionSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, dollarTracker.transform.position, goingBackSpeed * Time.deltaTime);
         }
         else
         {

@@ -633,7 +633,7 @@ Transform:
   - {fileID: 1688187626}
   - {fileID: 1100009320}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &309504665
 PrefabInstance:
@@ -644,7 +644,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4432835083169459585, guid: fa8fda693371e0f40bcf0563f039fa0b, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4432835083169459585, guid: fa8fda693371e0f40bcf0563f039fa0b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1141,8 +1141,9 @@ MonoBehaviour:
   player: {fileID: 1520334874}
   dollarTracker: {fileID: 1671192763}
   dollarContainer: {fileID: 329464269}
-  attractionSpeed: 1
-  recoverySpeed: 20
+  attractionSpeed: 1.5
+  goingBackSpeed: 0.1
+  recoverySpeed: 8
   rotationSpeed: 10
   maxDistanceFromPlayer: 1.5
   minDistanceFromPlayer: 1.48
@@ -1435,7 +1436,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &511135733
 GameObject:
@@ -2879,7 +2880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 916165461}
   - component: {fileID: 916165463}
-  - component: {fileID: 916165462}
+  - component: {fileID: 916165464}
   m_Layer: 0
   m_Name: Pickup Collider
   m_TagString: Player
@@ -2902,26 +2903,6 @@ Transform:
   m_Father: {fileID: 1520334878}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &916165462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 916165460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33f3b20d08134eb4b9aae8cc4df458d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCam: {fileID: 519420031}
-  gun: {fileID: 427362500}
-  ammoContainer: {fileID: 586948522}
-  altAmmoContainer: {fileID: 1447405527}
-  ammoFirstShot: {fileID: 441472606}
-  altAmmoFirstShot: {fileID: 2004002907}
-  mousePos: {x: 0, y: 0, z: 0}
-  pickupAmmoReload: 2
 --- !u!61 &916165463
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2948,6 +2929,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &916165464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916165460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 910322ae01dab4947ab8b3c6263458e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 519420031}
+  gun: {fileID: 427362500}
+  ammoContainer: {fileID: 586948522}
+  altAmmoContainer: {fileID: 1447405527}
+  ammoFirstShot: {fileID: 441472606}
+  altAmmoFirstShot: {fileID: 2004002907}
+  mousePos: {x: 0, y: 0, z: 0}
+  pickupAmmoReload: 2
 --- !u!1 &1006446334
 GameObject:
   m_ObjectHideFlags: 0
@@ -4751,7 +4752,7 @@ Transform:
   - {fileID: 916165461}
   - {fileID: 329464270}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1520334879
 MonoBehaviour:
@@ -4776,7 +4777,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4432835083169459585, guid: ee1eb5542b7ce8f49a68de73ef8bbeff, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4432835083169459585, guid: ee1eb5542b7ce8f49a68de73ef8bbeff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5658,7 +5659,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1919131800
 MonoBehaviour:
@@ -5676,7 +5677,7 @@ MonoBehaviour:
   altPooledObjects: []
   objectToPool: {fileID: 1290715225530138, guid: 6877fb649746c674d8fbbcf60d41892b, type: 3}
   altObjectToPool: {fileID: 1290715225530138, guid: 1e3279f9b6949a64c95c1c18407dfe57, type: 3}
-  amountToPool: 0
+  amountToPool: 25
   playerCircle: {fileID: 11910501}
 --- !u!114 &1919131802
 MonoBehaviour:
