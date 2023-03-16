@@ -17,15 +17,6 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Slider volumeSlider = null;
     [SerializeField] private float defaultVolume = 0.5f;
 
-    [Header("Gameplay Setting")]
-    [SerializeField] private TMP_Text mouseSenTextValue = null;
-    [SerializeField] private Slider mouseSenSlider = null;
-    [SerializeField] private int defaultSen = 5;
-    public int mainMouseSen = 5;
-
-    [Header("Toggle Settings")]
-    [SerializeField] private Toggle invertYToggle= null;
-
     [Header("Graphics Settings")]
     [SerializeField] private Slider brightnessSlider = null;
     [SerializeField] private TMP_Text brightnessTextValue = null;
@@ -64,8 +55,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject saveSettingsPrompt = null;
 
     [Header("Levels To Load")]
-    public string _easyLevel;
-    public string _mediumLevel;
+    public string _normalLevel;
     public string _hardLevel;
     private string levelToLoad;
 
@@ -145,15 +135,9 @@ public class MenuController : MonoBehaviour
         GameManager.Instance.UpdateGameState(GameState.MainMenu);
     }
 
-    public void NewEasyGameDialog()
+    public void NewNormalGameDialog()
     {
-        SceneManager.LoadScene(_easyLevel);
-        // Changing game state to Play
-        GameManager.Instance.UpdateGameState(GameState.Play);
-    }
-    public void NewMediumGameDialog()
-    {
-        SceneManager.LoadScene(_mediumLevel);
+        SceneManager.LoadScene(_normalLevel);
         // Changing game state to Play
         GameManager.Instance.UpdateGameState(GameState.Play);
     }
@@ -215,19 +199,6 @@ public class MenuController : MonoBehaviour
         if (SimplifyMenuName(currentMenu) == "Audio")
         {
             PlayerPrefs.SetFloat("Volume", AudioListener.volume);
-        }
-
-        if (SimplifyMenuName(currentMenu) == "Gameplay")
-        {
-            if (invertYToggle.isOn)
-            {
-                PlayerPrefs.SetInt("InvertY", 1);
-
-                // Need to actually invert Y axis
-            }
-            else
-                PlayerPrefs.SetInt("InvertY", 0);
-            PlayerPrefs.SetInt("Sensitivity", mainMouseSen);
         }
 
         if (SimplifyMenuName(currentMenu) == "Graphics")
@@ -352,15 +323,6 @@ public class MenuController : MonoBehaviour
             volumeTextValue.text = defaultVolume.ToString("0.0");
 
             shouldApply = true;
-        }
-        if (SimplifyMenuName(currentMenu) == "Gameplay")
-        {
-            mouseSenTextValue.text = defaultSen.ToString("0");
-            mouseSenSlider.value = defaultSen;
-            mainMouseSen = defaultSen;
-            invertYToggle.isOn= false;
-
-            shouldApply= true;
         }
         if (SimplifyMenuName(currentMenu) == "Graphics")
         {

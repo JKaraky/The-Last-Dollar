@@ -7,8 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
     [Header("Levels To Load")]
-    public string _easyLevel;
-    public string _mediumLevel;
+    public string _normalLevel;
     public string _hardLevel;
     private string levelToLoad;
     public string _mainMenu;
@@ -62,15 +61,9 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void NewEasyGameDialog()
+    public void NewNormalGameDialog()
     {
-        SceneManager.LoadScene(_easyLevel);
-        // Changing game state to Play
-        GameManager.Instance.UpdateGameState(GameState.Play);
-    }
-    public void NewMediumGameDialog()
-    {
-        SceneManager.LoadScene(_mediumLevel);
+        SceneManager.LoadScene(_normalLevel);
         // Changing game state to Play
         GameManager.Instance.UpdateGameState(GameState.Play);
     }

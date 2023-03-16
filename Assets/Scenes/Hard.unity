@@ -4941,8 +4941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 2061447871}
-  _easyLevel: Normal
-  _mediumLevel: 
+  _normalLevel: Normal
   _hardLevel: Hard
   _mainMenu: Main Menu
 --- !u!4 &1108728170
@@ -5835,7 +5834,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1108728169}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: NewMediumGameDialog
+        m_MethodName: NewNormalGameDialog
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
