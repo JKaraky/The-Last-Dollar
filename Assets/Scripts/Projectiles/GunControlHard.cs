@@ -10,6 +10,10 @@ public class GunControlHard : MonoBehaviour
     public GameObject altAmmoContainer;
     public GameObject ammoFirstShot;
     public GameObject altAmmoFirstShot;
+    public AudioSource audioSource;
+    public AudioClip noShot;
+    public AudioClip adBlockerShot;
+    public AudioClip pickupSound;
     public Vector3 mousePos;
     public int pickupAmmoReload;
     private int ammoLeft;
@@ -35,6 +39,8 @@ public class GunControlHard : MonoBehaviour
             ProjectileSpawning.projectilePoolInstance.projectilePool.Get();
             ammoLeft--;
 
+            audioSource.PlayOneShot(adBlockerShot);
+
             if (ammoLeft == 1)
             {
                 ammoFirstShot.SetActive(false);
@@ -51,6 +57,7 @@ public class GunControlHard : MonoBehaviour
         {
             ProjectileSpawning.projectilePoolInstance.variantProjectilePool.Get();
             altAmmoLeft--;
+            audioSource.PlayOneShot(noShot);
 
             if (altAmmoLeft == 1)
             {
@@ -68,6 +75,7 @@ public class GunControlHard : MonoBehaviour
     {
         if (collision.CompareTag("Pickup"))
         {
+            audioSource.PlayOneShot(pickupSound);
             ammoEquipped = true;
 
             if(altAmmoEquipped)
@@ -87,6 +95,7 @@ public class GunControlHard : MonoBehaviour
         }
         else if (collision.CompareTag("Alt Pickup"))
         {
+            audioSource.PlayOneShot(pickupSound);
             altAmmoEquipped = true;
 
             if (ammoEquipped)
