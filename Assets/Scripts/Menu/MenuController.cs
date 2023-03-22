@@ -17,14 +17,17 @@ public class MenuController : MonoBehaviour
     [SerializeField] private TMP_Text masterVolumeTextValue = null;
     [SerializeField] private Slider masterVolumeSlider = null;
     [SerializeField] private float defaultMasterVolume = 0.5f;
+    private float _masterVolume;
 
     [SerializeField] private TMP_Text musicVolumeTextValue = null;
     [SerializeField] private Slider musicVolumeSlider = null;
     [SerializeField] private float defaultMusicVolume = 0.5f;
+    private float _musicVolume;
 
     [SerializeField] private TMP_Text sfxVolumeTextValue = null;
     [SerializeField] private Slider sfxVolumeSlider = null;
     [SerializeField] private float defaultSfxVolume = 0.5f;
+    private float _SfxVolume;
 
     [SerializeField] private AudioMixer audioMixer;
 
@@ -168,6 +171,7 @@ public class MenuController : MonoBehaviour
     {
         audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
         masterVolumeTextValue.text = volume.ToString("0.0");
+        _masterVolume = volume;
 
         shouldApply = true;
     }
@@ -176,6 +180,7 @@ public class MenuController : MonoBehaviour
     {
         audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
         musicVolumeTextValue.text = volume.ToString("0.0");
+        _musicVolume = volume;
 
         shouldApply = true;
     }
@@ -184,6 +189,7 @@ public class MenuController : MonoBehaviour
     {
         audioMixer.SetFloat("SfxVolume", Mathf.Log10(volume) * 20);
         sfxVolumeTextValue.text = volume.ToString("0.0");
+        _SfxVolume = volume;
 
         shouldApply = true;
     }
@@ -225,7 +231,9 @@ public class MenuController : MonoBehaviour
     {
         if (SimplifyMenuName(currentMenu) == "Audio")
         {
-            PlayerPrefs.SetFloat("Volume", AudioListener.volume);
+            PlayerPrefs.SetFloat("MasterVolume", _masterVolume);
+            PlayerPrefs.SetFloat("MusicVolume", _musicVolume);
+            PlayerPrefs.SetFloat("SfxVolume", _SfxVolume);
         }
 
         if (SimplifyMenuName(currentMenu) == "Graphics")
@@ -251,12 +259,29 @@ public class MenuController : MonoBehaviour
     {
         if (resetAll || SimplifyMenuName(currentMenu) == "Audio")
         {
-            if (PlayerPrefs.HasKey("Volume"))
+            if (PlayerPrefs.HasKey("MasterVolume"))
             {
-                masterVolumeSlider.value = PlayerPrefs.GetFloat("Volume");
-                masterVolumeTextValue.text = PlayerPrefs.GetFloat("Volume").ToString("0.0");
+                _masterVolume = PlayerPrefs.GetFloat("MasterVolume");
+                masterVolumeSlider.value = _masterVolume;
+                masterVolumeTextValue.text = _masterVolume.ToString("0.0");
 
-                SetMasterVolume(masterVolumeSlider.value);
+                SetMasterVolume(_masterVolume);
+            }
+            if (PlayerPrefs.HasKey("MusicVolume"))
+            {
+                _musicVolume = PlayerPrefs.GetFloat("MusicVolume");
+                musicVolumeSlider.value = _musicVolume;
+                musicVolumeTextValue.text = _musicVolume.ToString("0.0");
+
+                SetMasterVolume(_musicVolume);
+            }
+            if (PlayerPrefs.HasKey("SfxVolume"))
+            {
+                _SfxVolume = PlayerPrefs.GetFloat("SfxVolume");
+                sfxVolumeSlider.value = _SfxVolume;
+                sfxVolumeTextValue.text = _SfxVolume.ToString("0.0");
+
+                SetMasterVolume(_SfxVolume);
             }
 
         }
@@ -340,16 +365,14 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    // Universal Reset method, specify menu type in editor
+    // Universal Reset method
     public void Reset()
     {
         if (SimplifyMenuName(currentMenu) == "Audio")
         {
-            audioMixer.SetFloat("MasterVolume", defaultMasterVolume);
-            masterVolumeSlider.value = defaultMasterVolume;
-            masterVolumeTextValue.text = defaultMasterVolume.ToString("0.0");
-
-            shouldApply = true;
+            SetMasterVolume(defaultMasterVolume);
+            SetMusicVolume(defaultMusicVolume);
+            SetSfxVolume(defaultSfxVolume);
         }
         if (SimplifyMenuName(currentMenu) == "Graphics")
         {
