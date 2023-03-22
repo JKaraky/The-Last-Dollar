@@ -273,7 +273,7 @@ public class MenuController : MonoBehaviour
                 musicVolumeSlider.value = _musicVolume;
                 musicVolumeTextValue.text = _musicVolume.ToString("0.0");
 
-                SetMasterVolume(_musicVolume);
+                SetMusicVolume(_musicVolume);
             }
             if (PlayerPrefs.HasKey("SfxVolume"))
             {
@@ -281,7 +281,7 @@ public class MenuController : MonoBehaviour
                 sfxVolumeSlider.value = _SfxVolume;
                 sfxVolumeTextValue.text = _SfxVolume.ToString("0.0");
 
-                SetMasterVolume(_SfxVolume);
+                SetSfxVolume(_SfxVolume);
             }
 
         }
@@ -317,6 +317,7 @@ public class MenuController : MonoBehaviour
         if (resetAll)
         {
             FillScoresTextFromPrefs();
+            shouldApply = false;
         }
     }
 
