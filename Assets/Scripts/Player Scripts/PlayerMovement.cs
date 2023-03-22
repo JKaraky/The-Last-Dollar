@@ -13,11 +13,13 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     public float maxBorder = 14.5f;
+    private SpriteRenderer sprite;
 
 
     void Awake()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
     }
     // Update is called once per frame
     void Update()
@@ -33,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
     {
         xMovement = Input.GetAxisRaw("Horizontal");
         yMovement = Input.GetAxisRaw("Vertical");
+
+        //Flipping the sprite based on movement
+        sprite.flipX = xMovement < 0;
 
         Vector2 inputVector = new Vector2(xMovement, yMovement);
 

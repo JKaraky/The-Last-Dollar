@@ -10,12 +10,14 @@ public class EnemyMovement : MonoBehaviour
     Vector3 goToPoint;
     bool canGo;
     Rigidbody2D enemyRb;
+    private SpriteRenderer sprite;
 
     void Start()
     {
         enemyRb = GetComponent<Rigidbody2D>();
         playerCircle = EnemyPool.SharedInstance.playerCircle;
         canGo= true;
+        sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     
@@ -24,6 +26,10 @@ public class EnemyMovement : MonoBehaviour
         if (canGo)
         {
             Vector2 movementDirection = playerCircle.transform.position - transform.position;
+
+            //Flipping the sprite based on movement
+            sprite.flipX = movementDirection.x < 0;
+
             enemyRb.velocity = movementDirection * speed;
         }
     }
