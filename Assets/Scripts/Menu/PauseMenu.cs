@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -11,6 +14,24 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private AudioClip clickAudio;
     [SerializeField] private AudioClip hoverAudio;
     [SerializeField] private AudioSource audioSource;
+
+    [Header("Volume Settings")]
+    [SerializeField] private TMP_Text masterVolumeTextValue = null;
+    [SerializeField] private Slider masterVolumeSlider = null;
+    [SerializeField] private float defaultMasterVolume = 0.5f;
+    private float _masterVolume;
+
+    [SerializeField] private TMP_Text musicVolumeTextValue = null;
+    [SerializeField] private Slider musicVolumeSlider = null;
+    [SerializeField] private float defaultMusicVolume = 0.5f;
+    private float _musicVolume;
+
+    [SerializeField] private TMP_Text sfxVolumeTextValue = null;
+    [SerializeField] private Slider sfxVolumeSlider = null;
+    [SerializeField] private float defaultSfxVolume = 0.5f;
+    private float _SfxVolume;
+
+    [SerializeField] private AudioMixer audioMixer;
 
     [Header("Levels To Load")]
     public string _normalLevel;
@@ -98,5 +119,26 @@ public class PauseMenu : MonoBehaviour
     public void HoverSound()
     {
         audioSource.PlayOneShot(hoverAudio);
+    }
+
+    public void SetMasterVolume(float volume)
+    {
+        audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
+        masterVolumeTextValue.text = volume.ToString("0.0");
+        _masterVolume = volume;
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
+        musicVolumeTextValue.text = volume.ToString("0.0");
+        _musicVolume = volume;
+    }
+
+    public void SetSfxVolume(float volume)
+    {
+        audioMixer.SetFloat("SfxVolume", Mathf.Log10(volume) * 20);
+        sfxVolumeTextValue.text = volume.ToString("0.0");
+        _SfxVolume = volume;
     }
 }

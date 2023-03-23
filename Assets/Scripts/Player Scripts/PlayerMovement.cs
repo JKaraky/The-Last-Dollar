@@ -12,8 +12,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
 
     [Header("Movement")]
-    public float maxBorder = 14.5f;
+    public float maxBorder;
     private SpriteRenderer sprite;
+    [SerializeField] private Animator animator;
 
 
     void Awake()
@@ -40,6 +41,10 @@ public class PlayerMovement : MonoBehaviour
         sprite.flipX = xMovement < 0;
 
         Vector2 inputVector = new Vector2(xMovement, yMovement);
+
+        // For animation to know when we are walking
+
+        animator.SetFloat("Speed", inputVector.sqrMagnitude);
 
         inputVector = Vector2.ClampMagnitude(inputVector, 1);
 
