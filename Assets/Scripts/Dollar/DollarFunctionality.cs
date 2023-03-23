@@ -8,6 +8,9 @@ public class DollarFunctionality : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject dollarTracker;
     [SerializeField] private GameObject dollarContainer;
+    [SerializeField] private AudioSource pickupAudioSource;
+    [SerializeField] private AudioSource cameraAudioSource;
+    [SerializeField] private AudioClip endGameAudio;
     private GameObject enemy;
     private bool dollarBeingDrawn;
     private float xMovement;
@@ -94,6 +97,8 @@ public class DollarFunctionality : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<EnemyMovement>() != null)
         {
+            pickupAudioSource.PlayOneShot(endGameAudio);
+            cameraAudioSource.Stop();
             PlayerCircle.EnemyEnteredCircle -= CircleEnterListener;
             PlayerCircle.EnemyExitedCircle -= CircleExitListener;
             Destroy(gameObject);

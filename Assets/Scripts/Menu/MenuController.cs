@@ -13,6 +13,11 @@ public class MenuController : MonoBehaviour
     private string currentMenu = "Main Menu Container";
     private string prevMenu = "";
 
+    [Header("Menu Audio")]
+    [SerializeField] private AudioClip clickAudio;
+    [SerializeField] private AudioClip hoverAudio;
+    [SerializeField] private AudioSource audioSource;
+
     [Header("Volume Settings")]
     [SerializeField] private TMP_Text masterVolumeTextValue = null;
     [SerializeField] private Slider masterVolumeSlider = null;
@@ -147,6 +152,16 @@ public class MenuController : MonoBehaviour
         ResetToSaved(true);
         // Setting Game State to Main Menu
         GameManager.Instance.UpdateGameState(GameState.MainMenu);
+    }
+
+    public void ClickSound()
+    {
+        audioSource.PlayOneShot(clickAudio);
+    }
+
+    public void HoverSound()
+    {
+        audioSource.PlayOneShot(hoverAudio);
     }
 
     public void NewNormalGameDialog()

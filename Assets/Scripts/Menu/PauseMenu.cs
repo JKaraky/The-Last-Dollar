@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
+
+    [Header("Menu Audio")]
+    [SerializeField] private AudioClip clickAudio;
+    [SerializeField] private AudioClip hoverAudio;
+    [SerializeField] private AudioSource audioSource;
+
     [Header("Levels To Load")]
     public string _normalLevel;
     public string _hardLevel;
@@ -82,5 +88,15 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadScene(_mainMenu);
         GameManager.Instance.UpdateGameState(GameState.MainMenu);
+    }
+
+    public void ClickSound()
+    {
+        audioSource.PlayOneShot(clickAudio);
+    }
+
+    public void HoverSound()
+    {
+        audioSource.PlayOneShot(hoverAudio);
     }
 }
