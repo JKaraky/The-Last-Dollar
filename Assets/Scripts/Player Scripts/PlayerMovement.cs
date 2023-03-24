@@ -38,7 +38,14 @@ public class PlayerMovement : MonoBehaviour
         yMovement = Input.GetAxisRaw("Vertical");
 
         //Flipping the sprite based on movement
-        sprite.flipX = xMovement < 0;
+        if (xMovement < 0)
+        {
+            sprite.flipX = true;
+        }
+        else if (xMovement > 0)
+        {
+            sprite.flipY = false;
+        }
 
         Vector2 inputVector = new Vector2(xMovement, yMovement);
 
