@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public float speed;
+    public bool isBanner = false;
     GameObject playerCircle;
     Vector3 goToPoint;
     bool canGo;
@@ -28,7 +29,10 @@ public class EnemyMovement : MonoBehaviour
             Vector2 movementDirection = playerCircle.transform.position - transform.position;
 
             //Flipping the sprite based on movement
-            sprite.flipX = movementDirection.x < 0;
+            if (!isBanner)
+            {
+                sprite.flipX = movementDirection.x < 0;
+            }
 
             enemyRb.velocity = movementDirection * speed;
         }

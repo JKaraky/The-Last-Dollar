@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     public Rigidbody2D projectileRb;
     private Transform spawnPosition;
     private Vector3 mousePos;
-    private float maxBorder = 14.5f;
+    private float maxBorder = 28f;
 
 
     void Awake()

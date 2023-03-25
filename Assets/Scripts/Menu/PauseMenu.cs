@@ -49,6 +49,38 @@ public class PauseMenu : MonoBehaviour
     {
         GameManager.OnStateChange += GameManagerOnStateChange;
     }
+    private void Start()
+    {
+        GetAudioPrefs();
+    }
+
+    public void GetAudioPrefs()
+    {
+        if (PlayerPrefs.HasKey("MasterVolume"))
+        {
+            _masterVolume = PlayerPrefs.GetFloat("MasterVolume");
+            masterVolumeSlider.value = _masterVolume;
+            masterVolumeTextValue.text = _masterVolume.ToString("0.0");
+
+            SetMasterVolume(_masterVolume);
+        }
+        if (PlayerPrefs.HasKey("MusicVolume"))
+        {
+            _musicVolume = PlayerPrefs.GetFloat("MusicVolume");
+            musicVolumeSlider.value = _musicVolume;
+            musicVolumeTextValue.text = _musicVolume.ToString("0.0");
+
+            SetMusicVolume(_musicVolume);
+        }
+        if (PlayerPrefs.HasKey("SfxVolume"))
+        {
+            _SfxVolume = PlayerPrefs.GetFloat("SfxVolume");
+            sfxVolumeSlider.value = _SfxVolume;
+            sfxVolumeTextValue.text = _SfxVolume.ToString("0.0");
+
+            SetSfxVolume(_SfxVolume);
+        }
+    }
     public void GameManagerOnStateChange(GameState state)
     {
         switch (state)
@@ -140,5 +172,12 @@ public class PauseMenu : MonoBehaviour
         audioMixer.SetFloat("SfxVolume", Mathf.Log10(volume) * 20);
         sfxVolumeTextValue.text = volume.ToString("0.0");
         _SfxVolume = volume;
+    }
+
+    public void Apply()
+    {
+        PlayerPrefs.SetFloat("MasterVolume", _masterVolume);
+        PlayerPrefs.SetFloat("MusicVolume", _musicVolume);
+        PlayerPrefs.SetFloat("SfxVolume", _SfxVolume);
     }
 }
