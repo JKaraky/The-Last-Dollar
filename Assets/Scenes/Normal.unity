@@ -5504,6 +5504,10 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6372866348846510446, guid: bbc20779520048d409867df4ae48d1c7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6699899137544901497, guid: bbc20779520048d409867df4ae48d1c7, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8
