@@ -1,0 +1,695 @@
+fileFormatVersion: 2
+guid: e0026c5b2a01c3543b2150ca3c476dd8
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dollar Spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 3288
+        width: 792
+        height: 462
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66b47bc6581feae428b34c28fc99538e
+      internalID: 1062640518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 1059
+        y: 3241
+        width: 793
+        height: 466
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86ee119815354b6488600df066f8fb10
+      internalID: 1639222287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 2059
+        y: 3241
+        width: 793
+        height: 466
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2adbd63c9b776c64e977f3efed2ef755
+      internalID: -1313497797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 3055
+        y: 3225
+        width: 812
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0de6d161bab751e45821c31f4f06f4bc
+      internalID: 110531398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2738
+        width: 882
+        height: 413
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77fa717f2a5ab674483d0f3dd8666916
+      internalID: -2055749936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 2718
+        width: 899
+        height: 433
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccb76e336e4b36f468e26f6ac5c48426
+      internalID: -1505792200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 1999
+        y: 2734
+        width: 912
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79eb1e0f300956140806126463b07a9c
+      internalID: 1180275678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 2999
+        y: 2747
+        width: 1001
+        height: 361
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 294e7ed78dce6ba4ba4c56b7d0d1224e
+      internalID: -816402784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2213
+        width: 935
+        height: 367
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6033c2eb93ba1494abd4045b4f9b2669
+      internalID: 969110537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 2213
+        width: 936
+        height: 385
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f3bd11c75987f94ca4cf4440f2e19d7
+      internalID: 1239773406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 1999
+        y: 2294
+        width: 946
+        height: 363
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e37ca289bb37804dbd1c99ad4f5e449
+      internalID: 435338880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 2999
+        y: 2240
+        width: 1001
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acd0b496b35a9af4485a05d44772c663
+      internalID: 201534809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1744
+        width: 945
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fe5089c3f81b8844b82bc309220ea6a
+      internalID: 1742021397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 1731
+        width: 946
+        height: 379
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8eff6a17ddc67394986748a6ac8400fd
+      internalID: 1670997490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 1999
+        y: 1802
+        width: 948
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b31dc6e98efc2f745bc47da683fdfa02
+      internalID: 1164952894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 3049
+        y: 1761
+        width: 901
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36880fa3d0805524aa7e4e938e81866c
+      internalID: 1377753184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1266
+        width: 1001
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61ec4f256647e4047a74d358f2a93f20
+      internalID: 1011580700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 1190
+        width: 1002
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99ec7abf91cc18b459b225d9f155654f
+      internalID: -1193328774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 1999
+        y: 1296
+        width: 1002
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92f2e22892226344d8531f5f7296300f
+      internalID: -1604421974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 3053
+        y: 1213
+        width: 947
+        height: 433
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1a61edab3a57bd4fa13f1f07fe75e0f
+      internalID: 1088656140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 715
+        width: 871
+        height: 335
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be23ad1001d8cbf4cb279a0bf03fc1b5
+      internalID: -1546861428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 718
+        width: 911
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32a42e86621f48842ad9e1879874109e
+      internalID: -1681254262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 1999
+        y: 717
+        width: 895
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c08c8e6bcb51ccc4fbd0594e13b21515
+      internalID: 1793449506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 2999
+        y: 709
+        width: 1001
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a99c5299aaf775d4fb4f388912e4b271
+      internalID: -1896897830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 140
+        width: 862
+        height: 457
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 656003f6f87341a4088d9482d76ec6a4
+      internalID: 399906052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar Spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 140
+        width: 1002
+        height: 465
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c041a02974842c4796c3e5db63f4fcc
+      internalID: 864478434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Dollar Spritesheet_1: 1639222287
+      Dollar Spritesheet_19: 1088656140
+      Dollar Spritesheet_11: 201534809
+      Dollar Spritesheet_9: 1239773406
+      Dollar Spritesheet_24: 399906052
+      Dollar Spritesheet_23: -1896897830
+      Dollar Spritesheet_10: 435338880
+      Dollar Spritesheet_7: -816402784
+      Dollar Spritesheet_13: 1670997490
+      Dollar Spritesheet_25: 864478434
+      Dollar Spritesheet_15: 1377753184
+      Dollar Spritesheet_21: -1681254262
+      Dollar Spritesheet_14: 1164952894
+      Dollar Spritesheet_22: 1793449506
+      Dollar Spritesheet_3: 110531398
+      Dollar Spritesheet_20: -1546861428
+      Dollar Spritesheet_5: -1505792200
+      Dollar Spritesheet_16: 1011580700
+      Dollar Spritesheet_0: 1062640518
+      Dollar Spritesheet_6: 1180275678
+      Dollar Spritesheet_18: -1604421974
+      Dollar Spritesheet_2: -1313497797
+      Dollar Spritesheet_4: -2055749936
+      Dollar Spritesheet_12: 1742021397
+      Dollar Spritesheet_17: -1193328774
+      Dollar Spritesheet_8: 969110537
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
