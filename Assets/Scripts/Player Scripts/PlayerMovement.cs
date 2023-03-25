@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (xMovement > 0)
         {
-            sprite.flipY = false;
+            sprite.flipX = false;
         }
 
         Vector2 inputVector = new Vector2(xMovement, yMovement);
