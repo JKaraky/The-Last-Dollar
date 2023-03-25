@@ -185,7 +185,7 @@ public class MenuController : MonoBehaviour
     public void SetMasterVolume (float volume)
     {
         audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
-        masterVolumeTextValue.text = volume.ToString("0.0");
+        masterVolumeTextValue.text = (volume * 100).ToString("0");
         _masterVolume = volume;
 
         shouldApply = true;
@@ -194,7 +194,7 @@ public class MenuController : MonoBehaviour
     public void SetMusicVolume(float volume)
     {
         audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
-        musicVolumeTextValue.text = volume.ToString("0.0");
+        musicVolumeTextValue.text = (volume * 100).ToString("0");
         _musicVolume = volume;
 
         shouldApply = true;
@@ -203,7 +203,7 @@ public class MenuController : MonoBehaviour
     public void SetSfxVolume(float volume)
     {
         audioMixer.SetFloat("SfxVolume", Mathf.Log10(volume) * 20);
-        sfxVolumeTextValue.text = volume.ToString("0.0");
+        sfxVolumeTextValue.text = (volume * 100).ToString("0");
         _SfxVolume = volume;
 
         shouldApply = true;
