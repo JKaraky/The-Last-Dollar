@@ -13490,6 +13490,8 @@ MonoBehaviour:
   spawnRate: 5
   pickup: {fileID: 433269771}
   altPickup: {fileID: 1188989144}
+  spawnSound: {fileID: 8300000, guid: 44a00a63466fd75439ba2fa6551b70c4, type: 3}
+  audioSource: {fileID: 45190444}
 --- !u!1 &1928234015
 GameObject:
   m_ObjectHideFlags: 0

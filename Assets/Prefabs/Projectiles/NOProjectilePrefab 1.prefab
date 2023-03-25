@@ -138,3 +138,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 10
   projectileRb: {fileID: 0}
+  maxBorder: 20
