@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 10
   projectileRb: {fileID: 0}
+  maxBorder: 20
 --- !u!50 &2713205196901896217
 Rigidbody2D:
   serializedVersion: 4
