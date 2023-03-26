@@ -37,11 +37,6 @@ public class MenuController : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
 
     [Header("Graphics Settings")]
-    [SerializeField] private Slider brightnessSlider = null;
-    [SerializeField] private TMP_Text brightnessTextValue = null;
-    [SerializeField] private float defaultBrightness = 1;
-
-    [Space(10)]
     [SerializeField] private TMP_Dropdown qualityDropdown;
     [SerializeField] private Toggle fullscreenToggle;
 
@@ -209,14 +204,6 @@ public class MenuController : MonoBehaviour
         shouldApply = true;
     }
 
-    public void SetBrightness(float brightness)
-    {
-        _brightnessLevel = brightness;
-        brightnessTextValue.text = brightness.ToString("0.0");
-
-        shouldApply = true;
-    }
-
     public void SetFullScreen(bool isFullScreen)
     {
         _isFullScreen= isFullScreen;
@@ -253,9 +240,6 @@ public class MenuController : MonoBehaviour
 
         if (SimplifyMenuName(currentMenu) == "Graphics")
         {
-            PlayerPrefs.SetFloat("Brightness", _brightnessLevel);
-            // Need to actually change brightness
-
             PlayerPrefs.SetInt("Quality", _qualityLevel);
             QualitySettings.SetQualityLevel(_qualityLevel);
 
@@ -302,13 +286,6 @@ public class MenuController : MonoBehaviour
         }
         if (resetAll || SimplifyMenuName(currentMenu) == "Graphics")
         {
-            if (PlayerPrefs.HasKey("Brightness"))
-            {
-                brightnessSlider.value = PlayerPrefs.GetFloat("Brightness");
-                brightnessTextValue.text = PlayerPrefs.GetFloat("Brightness").ToString("0.0");
-
-                SetBrightness(brightnessSlider.value);
-            }
             if (PlayerPrefs.HasKey("Quality"))
             {
                 qualityDropdown.value = PlayerPrefs.GetInt("Quality");
@@ -392,10 +369,6 @@ public class MenuController : MonoBehaviour
         }
         if (SimplifyMenuName(currentMenu) == "Graphics")
         {
-            // Reset brightness
-            brightnessSlider.value = defaultBrightness;
-            brightnessTextValue.text = defaultBrightness.ToString("0.0");
-
             qualityDropdown.value = 1;
             QualitySettings.SetQualityLevel(1);
 
