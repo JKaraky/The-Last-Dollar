@@ -44,6 +44,10 @@ public class EnemyMovement : MonoBehaviour
         {
             canGo= false;
         }
+        if (collision.gameObject.tag == "Border")
+        {
+            Physics2D.IgnoreCollision(collision.collider, collision.otherCollider);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)

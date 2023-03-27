@@ -10,6 +10,7 @@ TagManager:
   - Alt Dollar Enemy
   - Pickup
   - Alt Pickup
+  - Border
   layers:
   - Default
   - TransparentFX

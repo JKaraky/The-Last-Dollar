@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         if (!PauseMenu.gameIsPaused)
         {
             Movement();
-            Constraints();
+            //Constraints();
         }
     }
 
@@ -56,6 +56,13 @@ public class PlayerMovement : MonoBehaviour
         inputVector = Vector2.ClampMagnitude(inputVector, 1);
 
         playerRb.velocity = inputVector * moveSpeed;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Border")
+        {
+            Debug.Log("Homie entering");
+        }
     }
 
     void Constraints()

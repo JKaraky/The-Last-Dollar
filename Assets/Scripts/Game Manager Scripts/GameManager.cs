@@ -24,10 +24,13 @@ public class GameManager : MonoBehaviour
     {
         Instance= this;
     }
-
-    private void Start()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Return) && highscoreNameMenu.activeInHierarchy)
+        {
+            Debug.Log("Pressed Enter");
+            HighScoreContinueButton();
+        }
     }
 
     public void UpdateGameState(GameState newState)

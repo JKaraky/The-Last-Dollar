@@ -6448,7 +6448,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2022 You can hold two ammos of each type at a time."
+  m_text: "\u2022 You can hold two ammos of each type at a time, except in hard mode,
+    where you can only hold one type."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0c683048b5b4a6446a58da9f32617c8b, type: 2}
   m_sharedMaterial: {fileID: -797792331821862236, guid: 0c683048b5b4a6446a58da9f32617c8b, type: 2}
@@ -11185,7 +11186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 705.99994, y: -108.80502}
+  m_AnchoredPosition: {x: 706, y: -99}
   m_SizeDelta: {x: 853.92, y: 105.199}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1115720182
@@ -11208,7 +11209,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2022 Enemies will try to approach you and steal your dollar."
+  m_text: "\u2022 Enemies will try to approach you and steal your dollar. You can
+    push into them, but it is risky."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0c683048b5b4a6446a58da9f32617c8b, type: 2}
   m_sharedMaterial: {fileID: -797792331821862236, guid: 0c683048b5b4a6446a58da9f32617c8b, type: 2}
@@ -13377,8 +13379,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 706.002, y: -3.6050205}
-  m_SizeDelta: {x: 853.924, y: 105.2}
+  m_AnchoredPosition: {x: 706.002, y: 10.905}
+  m_SizeDelta: {x: 853.924, y: 76.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1311712527
 MonoBehaviour:
@@ -18076,8 +18078,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 706, y: -214}
-  m_SizeDelta: {x: 853.92, y: 105.2}
+  m_AnchoredPosition: {x: 706, y: -208}
+  m_SizeDelta: {x: 853.92, y: 74.245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1826345761
 MonoBehaviour:
@@ -19840,7 +19842,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2022 There are two types of ammo: Ad Blocker and NO."
+  m_text: "\u2022 There are two types of ammo: Ad Blocker and NO. You'll hear a sound
+    playing when they spawn."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0c683048b5b4a6446a58da9f32617c8b, type: 2}
   m_sharedMaterial: {fileID: -797792331821862236, guid: 0c683048b5b4a6446a58da9f32617c8b, type: 2}
@@ -21578,9 +21581,6 @@ MonoBehaviour:
   sfxVolumeSlider: {fileID: 142728640}
   defaultSfxVolume: 0.5
   audioMixer: {fileID: 24100000, guid: e3c8096e0725275428660be7b6bcd755, type: 2}
-  brightnessSlider: {fileID: 0}
-  brightnessTextValue: {fileID: 0}
-  defaultBrightness: 1
   qualityDropdown: {fileID: 1940391353}
   fullscreenToggle: {fileID: 991420242}
   resolutionDropdown: {fileID: 1940681711}

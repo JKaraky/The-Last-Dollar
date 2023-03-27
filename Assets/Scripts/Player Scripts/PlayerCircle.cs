@@ -45,6 +45,10 @@ public class PlayerCircle : MonoBehaviour
                 EnemyEnteredCircle?.Invoke();
             }
         }
+        if (collision.gameObject.tag == "Border")
+        {
+            Physics2D.IgnoreCollision(collision.collider, collision.otherCollider);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
