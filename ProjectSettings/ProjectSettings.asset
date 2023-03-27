@@ -155,7 +155,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: com.The-Defaults.The-Last-Dollar
+    Standalone: com.Local-Orc.The-Last-Dollar
   buildNumber:
     Standalone: 0
     iPhone: 0
