@@ -7040,6 +7040,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 903544125}
+  - component: {fileID: 903544126}
   m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
@@ -7066,6 +7067,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &903544126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903544124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73824fe66040a9740a95dbff213d05d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenColorChange: 0.3
+  topBorder: {fileID: 941204653}
+  rightBorder: {fileID: 1523089877}
+  leftBorder: {fileID: 203051222}
+  bottomBorder: {fileID: 580651610}
 --- !u!1 &921680226
 GameObject:
   m_ObjectHideFlags: 0
